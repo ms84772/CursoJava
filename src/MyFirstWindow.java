@@ -29,6 +29,7 @@ public class MyFirstWindow extends JFrame implements ActionListener{
 	public static void main(String[] args) {
 		MyFirstWindow mfw = new MyFirstWindow();
 		mfw.setTitle("Here is the title");
+		mfw.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mfw.setSize(800,680);
 		mfw.setVisible(true);
 	}
