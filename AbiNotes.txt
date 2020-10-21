@@ -1,0 +1,4 @@
+whatever
+git@github.com:ms84772/CursoJava.git
+git config --global user.email "abilopga@gmail.com"
+ git config --global user.name "AbiLop"
