@@ -1,3 +1,4 @@
+package misc;
 /*
  * This is the hello world class
  * that has just one main method with

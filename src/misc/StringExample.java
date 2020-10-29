@@ -1,3 +1,4 @@
+package misc;
 public class StringExample {
 	public static void main(String[] args) {
 		String txt = "We are\\ 'the' so-called\n \"Vikings\" from\t the north.";
