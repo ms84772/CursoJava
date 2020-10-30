@@ -146,18 +146,6 @@ public class PersonForm extends JPanel implements ActionListener {
 			editingId = id;
 			updateButton.setText("Save");
 		}
-		if(e.getActionCommand().equals("Update")) {
-			int row = table.getSelectedRow();
-			int id = (int) table.getModel().getValueAt(row, 0);
-			String firstName = (String)table.getModel().getValueAt(row, 1);
-			String lastName = (String)table.getModel().getValueAt(row, 2);
-			Date dob = (Date)table.getModel().getValueAt(row, 3);
-			fnText.setText(firstName);
-			lnText.setText(lastName);
-			dobText.setText(df.format(dob));
-			editingId = id;
-			updateButton.setText("Save");
-		}
 		if(e.getActionCommand().equals("Save")) {
 			String firstName = fnText.getText();
 			String lastName = lnText.getText();
