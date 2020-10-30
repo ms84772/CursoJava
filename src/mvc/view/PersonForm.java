@@ -101,10 +101,14 @@ public class PersonForm extends JPanel implements ActionListener {
 			long rs = personController.addPerson(person);
 			if(rs>0) {
 				refreshTable();
+				CachedRowSet crs = personDao.getAllPersonCRS();
+				this.table.setModel(new RowSetModel(crs));
+				this.table.repaint();
 				JOptionPane.showMessageDialog(this, "Record added successfully");
 				fnText.setText("");
 				lnText.setText("");
 				dobText.setText("");
+				notify();
 			}
 		}
 		if(e.getActionCommand().equals("Delete")) {
