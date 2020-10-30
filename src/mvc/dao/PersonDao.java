@@ -50,7 +50,7 @@ public class PersonDao {
 			PreparedStatement stmt = conn.prepareStatement(query);
 			stmt.setString(1, person.getFirstName());
 			stmt.setString(2, person.getLastName());
-			stmt.setObject(3, person.getDob().getTime());
+			stmt.setObject(3, new java.sql.Date(person.getDob().getTime()).toLocalDate());
 			stmt.setInt(4, person.getId());
 			key = stmt.executeUpdate();
 		}catch(SQLException e) {
