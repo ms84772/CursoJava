@@ -12,13 +12,16 @@ import mvc.dao.PersonDao;
 public class PersonView extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private PersonDao personDao = new PersonDao();
-	PersonForm pf = new PersonForm();
+	PersonForm pf;
 	PersonTable pt ;
 	JSplitPane jsp ;
+	CachedRowSet crs;
 	
 	public PersonView() {
-		CachedRowSet crs = personDao.getAllPersonCRS();
+		crs = personDao.getAllPersonCRS();
 		this.pt = new PersonTable(crs);
+		pf = new PersonForm();
+		pf.table = this.pt.table;
 		jsp = new JSplitPane(JSplitPane.VERTICAL_SPLIT,pf,pt);
 		this.pack();
 		this.add(jsp);
@@ -26,6 +29,7 @@ public class PersonView extends JFrame {
 		this.setSize(800,600);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 	}
 	
 	public static void main(String args[]) {
@@ -35,4 +39,5 @@ public class PersonView extends JFrame {
 		int y = (int)((dim.getHeight() - pv.getHeight())/2);
 		pv.setLocation(x, y);
 	}
+
 }

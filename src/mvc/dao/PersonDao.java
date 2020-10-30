@@ -113,7 +113,7 @@ public class PersonDao {
 	}
 	
 	public CachedRowSet getAllPersonCRS() {
-		String query = "select * from person";
+		String query = "select * from person order by id";
 		CachedRowSet rowset=null;
 		try{
 			PreparedStatement stmt = conn.prepareStatement(query);

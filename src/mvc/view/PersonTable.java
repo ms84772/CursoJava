@@ -1,11 +1,11 @@
 package mvc.view;
 
 import java.awt.BorderLayout;
-import java.sql.SQLException;
 
 import javax.sql.rowset.CachedRowSet;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 public class PersonTable extends JPanel {
@@ -15,15 +15,13 @@ public class PersonTable extends JPanel {
 	JButton b = new JButton("under construction");
 	
 	JTable table ;
+	JScrollPane jsp;
 	
 	public PersonTable(CachedRowSet crs) {
-		try {
-			table = new JTable(new PersonTableModel(crs));
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		table = new JTable(new RowSetModel(crs));
+		jsp = new JScrollPane(table);
 		this.setLayout(new BorderLayout());
-		this.add(table);
+		this.add(jsp);
 		this.add(b,BorderLayout.SOUTH);
 	}
 }
