@@ -9,18 +9,22 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import javax.sql.rowset.CachedRowSet;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import mvc.controller.PersonController;
+import mvc.dao.PersonDao;
 import mvc.model.Person;
 
 public class PersonForm extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private PersonController personController = new PersonController();
+	private PersonDao personDao = new PersonDao();
 	DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
 
 	JPanel fieldPanel = new JPanel(new GridLayout(3, 2));
@@ -38,9 +42,10 @@ public class PersonForm extends JPanel implements ActionListener {
 	JButton deleteButton = new JButton("Delete");
 	JButton updateButton = new JButton("Update");
 	JButton closeButton = new JButton("Close");
+	JButton refreshButton = new JButton("Refresh");
 
 	JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-
+	JTable table;
 	public PersonForm() {
 		fieldPanel.add(fnLabel);
 		fieldPanel.add(fnText);
@@ -53,6 +58,7 @@ public class PersonForm extends JPanel implements ActionListener {
 		buttonPanel.add(deleteButton);
 		buttonPanel.add(updateButton);
 		buttonPanel.add(closeButton);
+		buttonPanel.add(refreshButton);
 
 		addButton.addActionListener(this);
 		deleteButton.addActionListener(this);
@@ -65,7 +71,7 @@ public class PersonForm extends JPanel implements ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	synchronized public void actionPerformed(ActionEvent e) {
 		System.out.println(e.getActionCommand());
 		if (e.getActionCommand().equals("Close")) {
 			System.exit(0);
@@ -87,10 +93,14 @@ public class PersonForm extends JPanel implements ActionListener {
 			}
 			long rs = personController.addPerson(person);
 			if(rs>0) {
+				CachedRowSet crs = personDao.getAllPersonCRS();
+				this.table.setModel(new RowSetModel(crs));
+				this.table.repaint();
 				JOptionPane.showMessageDialog(this, "Record added successfully");
 				fnText.setText("");
 				lnText.setText("");
 				dobText.setText("");
+				notify();
 			}
 		}
 

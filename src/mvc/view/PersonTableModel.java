@@ -9,15 +9,12 @@ import javax.swing.table.TableModel;
 
 public class PersonTableModel implements TableModel {
 
-	//private static final long serialVersionUID = 1L;
 	private CachedRowSet personRowSet;
 	private ResultSetMetaData metadata;
-	//private int numcols; 
 	
 	public PersonTableModel(CachedRowSet crs) throws SQLException{
 		this.personRowSet = crs;
 		this.metadata = this.personRowSet.getMetaData();
-		//this.numcols = metadata.getColumnCount();
 		
 	}
 	
@@ -81,13 +78,6 @@ public class PersonTableModel implements TableModel {
 
 	@Override
 	public Class<?> getColumnClass(int columnIndex) {
-//		Class clazz = null;
-//		try{
-//			clazz = this.metadata.getColumnType(columnIndex+1);
-//		}catch(SQLException e){
-//			e.printStackTrace();
-//		}
-//		return clazz;
 		return String.class;
 	}
 
