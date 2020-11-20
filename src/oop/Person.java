@@ -68,10 +68,10 @@ public class Person implements Serializable  {
 	
 	public String toString() {
 		
-		return "First Name: " +this.firstName + "\n"+
-				"Last Name: " +this.lastName + "\n"+
-				"Brithdate: " +this.dob+ "\n"+ 
-				"TransExample:" + this.transExample;
+		return "First Name:    \t" +this.firstName + "\n"+
+				"Last Name:    \t" +this.lastName + "\n"+
+				"Brithdate:    \t" +this.dob+ "\n"+ 
+				"TransExample: \t" + this.transExample;
 				
 		
 	}
