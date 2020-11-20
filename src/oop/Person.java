@@ -7,7 +7,7 @@ public class Person implements Serializable  {
 	private String firstName;
 	private String lastName;
 	private Date dob;
-	private String transExample;
+	private transient String transExample;
 	
 	
 	

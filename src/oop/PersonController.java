@@ -16,7 +16,7 @@ public class PersonController {
 		System.out.println(p1.eat());
 		System.out.println(p1.eat("carrtos"));
 		
-		Person p2 = new Person("Jaime","Lopez", new Date());
+		Person p2 = new Person("Jaime","Lopez", new Date(),"Transient Example text");
 		System.out.println(p2);
 		System.out.println(p2.eat());
 		System.out.println(p2.eat("meat"));
