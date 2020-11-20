@@ -1,12 +1,25 @@
 package oop;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Person {
+public class Person implements Serializable  {
 	private String firstName;
 	private String lastName;
 	private Date dob;
+	private String transExample;
 	
+	
+	
+	public String getTransExample() {
+		return transExample;
+	}
+
+	public void setTransExample(String transExample) {
+		this.transExample = transExample;
+	}
+
+
 	int heads;
 	
 	public String eat() {
@@ -20,10 +33,11 @@ public class Person {
 	public Person() {
 		System.out.println("the constructor is being called");
 	}
-	public Person(String fn, String ln, Date dobC) {
+	public Person(String fn, String ln, Date dobC, String trans) {
 		this.firstName=fn;
 		this.lastName=ln;
 		this.dob=dobC;
+		this.transExample = trans;
 	}
 	
 	public Person(String fn, String ln) {
@@ -56,7 +70,8 @@ public class Person {
 		
 		return "First Name: " +this.firstName + "\n"+
 				"Last Name: " +this.lastName + "\n"+
-				"Brithdate: " +this.dob+ "";
+				"Brithdate: " +this.dob+ "\n"+ 
+				"TransExample:" + this.transExample;
 				
 		
 	}
