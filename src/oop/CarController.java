@@ -18,6 +18,9 @@ public class CarController {
 		//save(beettle);
 		
 		
+		//Car myCar = new Car();
+		Beettle mycar2 = new Beettle();
+		
 		
 		
 

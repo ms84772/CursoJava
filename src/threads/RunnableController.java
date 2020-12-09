@@ -23,6 +23,15 @@ public class RunnableController {
 		te7.start();
 		te8.start();
 
+//		te1.run();
+//		te2.run();
+//		te3.run();
+//		te4.run();
+//		te5.run();
+//		te6.run();
+//		te7.run();
+//		te8.run();
+
 
 	}
 
