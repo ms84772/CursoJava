@@ -9,7 +9,7 @@ public class ClockController {
 		c.setMinutes(30);
 		c.setSeconds(12);
 
-		System.out.println(c.displayTime());
+		//System.out.println(c.displayTime());
 		
 	}
 
